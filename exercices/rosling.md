@@ -1,0 +1,1 @@
+Hans Rosling explique que plus le revenue est haut plus l'éspérance de vie est haute
