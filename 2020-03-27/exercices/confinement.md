@@ -1,3 +1,0 @@
-mon impression est que les utilisateurs font plus de la même chose, s'ils commentaient des postes Facebook, ils commentent plus, s'ils faisaient des storys, ils en font plus etc....
-
-je pense qu'il faut attendre encore une semaine ou deux pour voir de vrais changements dans les médias

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>simple</title>
+</head>
+<body>
+    <div></div>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script>
+        const DATA =  [3,8,1,9];
+
+        const div = d3.select('div');
+
+        div.append('h1').text('TITRE');
+
+        div.selectAll('p')
+            .data(DATA)
+            .enter()
+            .append('p')
+            .attr('id', d => `id-${d}`)
+            .text(d => `Valeur de : ${d}`)
+            .attr('style', d => `color: ${(d == 8)?'red':'blue'}`)
+
+    </script>
+    
+</body>
+</html>

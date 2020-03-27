@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        circle {
+            fill: indianred;
+        }
+        circle:hover {
+            fill: steelblue;
+        }
+
+        @keyframes bink {
+            from {
+                r: 40;
+
+            }
+            to {
+                r: 0;
+
+            }
+        }
+
+        circle {
+            animation-duration: 3s;
+            animation-name: bink;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+    <svg viewBox="0 0 200 100">
+        <circle id='C' cx="100" cy="50" r="40"/>
+    </svg>
+
+    <script>
+
+     const c = document.getElementById('C');
+     let isBig = true;
+
+        c.addEventListener('click', () => {
+            c.setAttribute('r', isBig ?20 : 40);
+            isBig = !isBig;
+
+        })
+    </script>
+    
+</body>
+</html>

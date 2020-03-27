@@ -1,0 +1,19 @@
+{
+  "name": "20200228",
+  "version": "1.0.0",
+  "main": "exercice_1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:batons": "parcel 20200228/src/index.html --out-dir 20200228/dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "d3": "^5.15.0"
+  },
+  "description": ""
+}
