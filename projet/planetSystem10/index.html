@@ -1,0 +1,60 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        #info {
+            position: relative;
+            display: block;
+            cursor: pointer;
+            background-color: blueviolet;
+        }
+        .info {
+            position: relative;
+            display: block;
+            cursor: pointer;
+            background-color: red;
+        }
+        path.notinfo {
+            stroke: white;
+            opacity: 0;
+        }
+        text.notinfo {
+            visibility: hidden;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+
+    
+
+    <svg id="sunSystem" viewBox="0 0 2000 2000"  xmlns="https://www.w3.org/2000/svg">
+    
+        <circle id="sun" cx="1000" cy="1000" r="180" fill="gold" />
+        <!--<rect id="fontsun" class="notinfo" x="900" y="300" rx="15" ry="15" width="400" height="500" fill="white" stroke="lightgray" /> -->
+         <text id="textsun" class="notinfo" x="1000" y="650" font-family="Verdana" font-size="55" text-anchor="middle" fill="indianred">Soleil</text>
+
+
+</svg>
+
+<script src="jQuery.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
+
+<!--
+        <text id="thingyouhoverover" x="50" y="35" font-size="14">Mouse over me!</text>
+        <text id="thepopup" x="250" y="100" font-size="30" fill="black" visibility="hidden">Change me
+           <set attributeName="visibility" from="hidden" to="visible" begin="thingyouhoverover.mouseover" end="thingyouhoverover.mouseout"/>
+        </text>
+-->
