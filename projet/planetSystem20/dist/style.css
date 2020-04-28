@@ -1,0 +1,58 @@
+
+body {
+    position: fixed;
+    margin: 0px;
+}
+
+svg {
+    align-content: center;
+    height: 95vh;
+    width: 100vw;
+}
+
+#sun:hover {
+    fill: red;
+}
+
+.info {
+    position: absolute;
+    top: 100px;
+    right: 10%;
+    height: auto;
+    width: auto;
+    background-color: white;
+    box-shadow: 1px 1px 5px #555;
+    border-radius: 10px;
+    color: gray;
+    font-family: sans-serif;
+    font-size: 13px;
+    text-align: center;
+    visibility: hidden;
+    padding: 10px;
+}
+
+nav {
+    opacity: 0;
+    background-color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 14px 16px;
+    transition-property: opacity;
+    transition-duration: 1s;
+}
+
+nav:hover {
+    opacity: 100;
+}
+
+nav button {
+    color: white;
+    background-color: #333;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+

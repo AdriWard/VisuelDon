@@ -1,0 +1,15 @@
+
+body {
+    position: fixed;
+    margin: 0px;
+}
+
+svg {
+    align-content: center;
+    height: 95vh;
+    width: 100vw;
+}
+
+#sun:hover {
+    fill: red;
+}
