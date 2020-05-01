@@ -1,5 +1,4 @@
 nav {
-    opacity: 0;
     background-color: #333;
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
@@ -8,10 +7,6 @@ nav {
     padding: 14px 16px;
     transition-property: opacity;
     transition-duration: 1s;
-}
-
-nav:hover {
-    opacity: 100;
 }
 
 nav button {

@@ -19,7 +19,7 @@ const DATA =
             "name" : "Soleil",
             "distance": 0,
             "rayon" : 150,
-            "color" : "gold",
+            "color" : "#fcbf1e",
             "revolution": 0,
             "flag": 0,
             "data": 
@@ -49,7 +49,7 @@ const DATA =
             "name" : "Mercure",
             "distance": 180,
             "rayon" : 12,
-            "color" : "darkgray",
+            "color" : "#f2f2f2",
             "revolution": 8,
             "flag": 0,
             "data": 
@@ -79,7 +79,7 @@ const DATA =
             "name" : "Venus",
             "distance": 230,
             "rayon" : 17,
-            "color" : "peachpuff",
+            "color" : "#e58a8a",
             "revolution": 22,
             "flag": 0,
             "data": 
@@ -109,7 +109,7 @@ const DATA =
             "name" : "Terre",
             "distance": 280,
             "rayon" : 19,
-            "color" : "cornflowerblue",
+            "color" : "#0779e4",
             "revolution": 36,
             "flag": 0,
             "data": 
@@ -139,7 +139,7 @@ const DATA =
             "name" : "Mars",
             "distance": 330,
             "rayon" : 10,
-            "color" : "indianred",
+            "color" : "#fbb4ae",
             "revolution": 68,
             "flag": 0,
             "data": 
@@ -169,7 +169,7 @@ const DATA =
             "name" : "Jupiter",
             "distance": 520,
             "rayon" : 69,
-            "color" : "darkorange",
+            "color" : "#fed9a6",
             "revolution": 433,
             "flag": 0,
             "data": 
@@ -199,7 +199,7 @@ const DATA =
             "name" : "Saturne",
             "distance": 680,
             "rayon" : 58,
-            "color" : "khaki",
+            "color" : "#fdd998",
             "revolution": 1075,
             "flag": 0,
             "data": 
@@ -229,7 +229,7 @@ const DATA =
             "name" : "Uranus",
             "distance": 800,
             "rayon" : 25,
-            "color" : "cyan",
+            "color" : "#40bad5",
             "revolution": 300,
             "flag": 0,
             "data": 
@@ -259,7 +259,7 @@ const DATA =
             "name" : "Neptune",
             "distance": 980,
             "rayon" : 24,
-            "color" : "darkblue",
+            "color" : "#035aa6",
             "revolution": 600,
             "flag": 0,
             "data": 
@@ -513,4 +513,88 @@ menu.selectAll('button')
     .on("mouseover",d => {if(!d.flag) {showPlanet(d)}})
     .on("mouseout", d =>{if(!d.flag) {hiddenPlanet(d)}})
     .on("click", d => clickPlanet(d))
+
+
+d3.select('.drop')
+    .attr('ondrop','drop(event)')
+    .attr('ondragover','event.preventDefault()')
+
+
+d3.select('.info')
+    .attr('draggable',"true")
+
+
+let drop = () => {
+
+       d3.select('.info')
+        .style('top',`${event.pageY - MouseY}px`)
+        .style('left',`${event.pageX - MouseX}px`)
+
+
+
+        // récupérer la position de la bull-infos
+
+       
+      console.log("page x " + (event.pageX))
+
+       console.log("page y " + (event.pageY))
+
+       console.log("mouse page x " + (event.pageX - MouseX))
+
+       console.log("mouse page y " + (event.pageY - MouseY))
+
+      }
+
+    let MouseX = 0
+
+    let MouseY = 0
+
+    let x = 0
+
+    let y = 0
+
+
+    let move = false
+
+    d3.select('.info')
+        .on('mousedown', () => {
+
+            if(event.target.className == 'info')
+            {
+               // move = true
+            }
+
+            MouseX = event.offsetX
+
+            MouseY = event.offsetY
+
+            x = event.pageX
+
+            y = event.pageY
+
+            console.log(event.offsetX)
+
+            console.log(event.offsetY)
+
+            console.log('test')
+
+        })
+        .on('mousemove', () => {
+
+            if(move)
+            {
+                    console.log("page x " + event.pageX)
+
+                    console.log("Offset x " + event.offsetX)
+
+                    console.log("left " + `${event.pageX - event.offsetX}`)
+            }
+        })
+        .on('mouseup', () => {
+
+            move = false
+
+            console.log("mouveement" + event.movementX)
+        })
+
 

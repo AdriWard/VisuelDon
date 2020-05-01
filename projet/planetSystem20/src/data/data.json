@@ -18,7 +18,7 @@
             "name" : "Soleil",
             "distance": 0,
             "rayon" : 150,
-            "color" : "gold",
+            "color" : "#fcbf1e",
             "revolution": 0,
             "flag": 0,
             "data": 
@@ -48,7 +48,7 @@
             "name" : "Mercure",
             "distance": 180,
             "rayon" : 12,
-            "color" : "darkgray",
+            "color" : "#f2f2f2",
             "revolution": 8,
             "flag": 0,
             "data": 
@@ -78,7 +78,7 @@
             "name" : "Venus",
             "distance": 230,
             "rayon" : 17,
-            "color" : "peachpuff",
+            "color" : "#e58a8a",
             "revolution": 22,
             "flag": 0,
             "data": 
@@ -108,7 +108,7 @@
             "name" : "Terre",
             "distance": 280,
             "rayon" : 19,
-            "color" : "cornflowerblue",
+            "color" : "#0779e4",
             "revolution": 36,
             "flag": 0,
             "data": 
@@ -138,7 +138,7 @@
             "name" : "Mars",
             "distance": 330,
             "rayon" : 10,
-            "color" : "indianred",
+            "color" : "#fbb4ae",
             "revolution": 68,
             "flag": 0,
             "data": 
@@ -168,7 +168,7 @@
             "name" : "Jupiter",
             "distance": 520,
             "rayon" : 69,
-            "color" : "darkorange",
+            "color" : "#fed9a6",
             "revolution": 433,
             "flag": 0,
             "data": 
@@ -198,7 +198,7 @@
             "name" : "Saturne",
             "distance": 680,
             "rayon" : 58,
-            "color" : "khaki",
+            "color" : "#fdd998",
             "revolution": 1075,
             "flag": 0,
             "data": 
@@ -228,7 +228,7 @@
             "name" : "Uranus",
             "distance": 800,
             "rayon" : 25,
-            "color" : "cyan",
+            "color" : "#40bad5",
             "revolution": 300,
             "flag": 0,
             "data": 
@@ -258,7 +258,7 @@
             "name" : "Neptune",
             "distance": 980,
             "rayon" : 24,
-            "color" : "darkblue",
+            "color" : "#035aa6",
             "revolution": 600,
             "flag": 0,
             "data": 

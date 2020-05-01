@@ -1,9 +1,4 @@
 
-body {
-    position: fixed;
-    margin: 0px;
-}
-
 svg {
     align-content: center;
     height: 95vh;
@@ -11,5 +6,5 @@ svg {
 }
 
 #sun:hover {
-    fill: red;
+    fill: #d8345f;
 }
