@@ -4,6 +4,8 @@ const xCentre = 1000;
 const yCentre = 1000;
 
 const svg = d3.select('#sunSystem')
+                .style('height','95vh')
+                .style('width','100vw')
                 .on("click", () => {
                     if(d3.event.target.localName == 'svg')
                     {

@@ -7,8 +7,8 @@ const distanceMAX = 2249200
 
    
    let distance = d3.select('#distance')
-            .style('height','0vh')
-            .style('width','0vm')
+            .style('height','95vh')
+            .style('width','100vw')
             .selectAll('g')
             .data(DATA.corps)
             .enter()

@@ -294,6 +294,8 @@ const xCentre = 1000;
 const yCentre = 1000;
 
 const svg = d3.select('#sunSystem')
+                .style('height','95vh')
+                .style('width','100vw')
                 .on("click", () => {
                     if(d3.event.target.localName == 'svg')
                     {
@@ -810,8 +812,8 @@ const distanceMAX = 2249200
 
    
    let distance = d3.select('#distance')
-            .style('height','0vh')
-            .style('width','0vm')
+            .style('height','95vh')
+            .style('width','100vw')
             .selectAll('g')
             .data(DATA.corps)
             .enter()
@@ -905,8 +907,8 @@ const volumeMAX = 1000
 
    
    let volume = d3.select('#volume')
-            .style('height','0vh')
-            .style('width','0vm')
+            .style('height','95vh')
+            .style('width','100vw')
             .selectAll('g')
             .data(DATA.corps)
             .enter()

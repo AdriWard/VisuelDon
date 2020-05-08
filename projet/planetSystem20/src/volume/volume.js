@@ -4,8 +4,8 @@ const volumeMAX = 1000
 
    
    let volume = d3.select('#volume')
-            .style('height','0vh')
-            .style('width','0vm')
+            .style('height','95vh')
+            .style('width','100vw')
             .selectAll('g')
             .data(DATA.corps)
             .enter()
