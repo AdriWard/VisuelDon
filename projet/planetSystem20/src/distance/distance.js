@@ -2,13 +2,13 @@
 const yMargin = 200;
 
    
-const distanceMAX = 2249200
-
+const distanceMAX = 1900000
 
    
    let distance = d3.select('#distance')
             .style('height','95vh')
             .style('width','100vw')
+            .on("click", () => hiddenClick(d3.event.target.localName))
             .selectAll('g')
             .data(DATA.corps)
             .enter()
@@ -87,10 +87,4 @@ const distanceMAX = 2249200
             .attr('cy', 1000)
             .attr('fill','#fcbf1e')
             .attr('r',1000)
-
-            
-
-            //d3.select('#distance g.sun')
-            //.style('visibility','hidden')
-
 

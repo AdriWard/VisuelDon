@@ -59,4 +59,5 @@ let infoPlanete = (info) => {
 let hiddenInfo = () => {
 
         d3.select('.info').text('').style('visibility','hidden')
+
 }

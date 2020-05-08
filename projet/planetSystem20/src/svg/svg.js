@@ -6,13 +6,7 @@ const yCentre = 1000;
 const svg = d3.select('#sunSystem')
                 .style('height','95vh')
                 .style('width','100vw')
-                .on("click", () => {
-                    if(d3.event.target.localName == 'svg')
-                    {
-                        hiddenInfo()
-                        DATA.corps.forEach(d => hiddenPlanet(d))
-                    }
-                })
+                .on("click", () => hiddenClick(d3.event.target.localName))
 
 
 const planet = svg.selectAll('g')
@@ -27,15 +21,15 @@ planet.on("mouseover",d => {if(!d.flag && !flagAll) {showPlanet(d)}})
 
 planet.append('circle')
 .attr('id',d => d.id)
-.attr('cx',d => xCentre - d.distance )
+.attr('cx',d => xCentre - d.distance)
 .attr('cy',yCentre)
 .attr('fill',d => d.color)
 .attr('r',d => d.rayon)
 .append('animateTransform')
 .attr('attributeName','transform')
 .attr('type','rotate')
-.attr('from', `0 ${xCentre} ${yCentre}`)
-.attr('to',`360 ${xCentre} ${yCentre}`)
+.attr('from', d => `${0 + 15*d.rayon} ${xCentre} ${yCentre}`)
+.attr('to', d =>`${360 + 15*d.rayon} ${xCentre} ${yCentre}`)
 .attr('dur',d => d.revolution)
 .attr('repeatCount','indefinite');
 

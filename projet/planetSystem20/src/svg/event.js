@@ -99,4 +99,13 @@ let clickDistance = (d) => {
 
 }
 
+let hiddenClick = (local) => {
 
+    if(local == 'svg')
+    {
+        hiddenInfo()
+        DATA.corps.forEach(d => hiddenPlanet(d))
+        DATA.corps.forEach(d => d.flag = 0)
+        flagAll = 0
+    }
+}

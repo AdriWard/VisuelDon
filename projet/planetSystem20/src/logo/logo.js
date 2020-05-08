@@ -13,11 +13,9 @@ let svgLogo = d3.select('#logo')
     .attr('r',20)
 
 
-
-
     svgLogo.append('circle')
-    .attr('cx',50 )
-    .attr('cy',50)
+    .attr('cx',20 )
+    .attr('cy',100)
     .attr('fill','white')
     .attr('r',20)
     .append('animateTransform')

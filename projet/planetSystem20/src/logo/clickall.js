@@ -9,13 +9,20 @@ let clickAll = () => {
         d3.selectAll('g.sun circle').style('fill','#d8345f')
 
         DATA.corps.forEach( d => {
-            
+
+            hiddenPlanet(d)
+                   
             d3.select(`.orbite${d.id}`)
                 .style('opacity',100)
 
             d3.select(`.line${d.id}`)
                 .style('opacity',100)
+
+            d3.select(`#volume .text${d.id}`)
+                .style('visibility','visible')
         })
+
+        hiddenInfo()
     }
     else
     {
@@ -24,6 +31,7 @@ let clickAll = () => {
         DATA.corps.forEach( d => {
 
             hiddenPlanet(d)
+            d.flag = 0
         })
     }    
 

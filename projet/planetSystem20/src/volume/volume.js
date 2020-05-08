@@ -6,6 +6,7 @@ const volumeMAX = 1000
    let volume = d3.select('#volume')
             .style('height','95vh')
             .style('width','100vw')
+            .on("click", () => hiddenClick(d3.event.target.localName))
             .selectAll('g')
             .data(DATA.corps)
             .enter()
@@ -60,11 +61,11 @@ const volumeMAX = 1000
 
             d3.select('#volume g.sun circle')
             .attr('id','sun')
-            .attr('cx',-xMargin - 220)
+            .attr('cx',-xMargin - 270)
 
             d3.selectAll('#volume g.sun text')
             .attr('x',-xMargin - 220)
-            .attr('y',(d,i) => i*100 +1000)
+            .attr('y',(d,i) => i*100 + 1000)
 
             d3.select('#volume g.sun circle.orbitesun')
             .remove()
