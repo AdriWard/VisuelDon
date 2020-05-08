@@ -19,9 +19,9 @@ const planet = svg.selectAll('g')
                 .attr('class',d => d.id)
 
 
-planet.on("mouseover",d => {if(!d.flag) {showPlanet(d)}})
-      .on("mouseout", d =>{if(!d.flag) {hiddenPlanet(d)}})
-      .on("click", d => clickPlanet(d))
+planet.on("mouseover",d => {if(!d.flag && !flagAll) {showPlanet(d)}})
+      .on("mouseout", d =>{if(!d.flag && !flagAll) {hiddenPlanet(d)}})
+      .on("click", d => {if(!flagAll) {clickPlanet(d)}})
 
 planet.append('circle')
 .attr('id',d => d.id)
@@ -77,3 +77,5 @@ planet.append('circle')
 .attr('fill','none')
 .style('opacity',0)
 .style('stroke-width',35)
+
+

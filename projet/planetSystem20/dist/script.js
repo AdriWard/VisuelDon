@@ -309,9 +309,9 @@ const planet = svg.selectAll('g')
                 .attr('class',d => d.id)
 
 
-planet.on("mouseover",d => {if(!d.flag) {showPlanet(d)}})
-      .on("mouseout", d =>{if(!d.flag) {hiddenPlanet(d)}})
-      .on("click", d => clickPlanet(d))
+planet.on("mouseover",d => {if(!d.flag && !flagAll) {showPlanet(d)}})
+      .on("mouseout", d =>{if(!d.flag && !flagAll) {hiddenPlanet(d)}})
+      .on("click", d => {if(!flagAll) {clickPlanet(d)}})
 
 planet.append('circle')
 .attr('id',d => d.id)
@@ -367,6 +367,9 @@ planet.append('circle')
 .attr('fill','none')
 .style('opacity',0)
 .style('stroke-width',35)
+
+
+
 
 
 /**
@@ -447,6 +450,11 @@ let hiddenInfo = () => {
 
     d3.select(`.line${d.id}`)
         .style('opacity',100)
+
+    if(d.id == 'sun')
+    {
+        d3.selectAll('g.sun circle').style('fill','#d8345f')
+    }
    
    } 
 
@@ -466,7 +474,13 @@ let hiddenPlanet = (d) => {
 
     d3.select(`.line${d.id}`)
         .style('opacity',0)
-   
+    
+
+    if(d.id == 'sun')
+    {
+        d3.selectAll('g.sun circle').style('fill',d => d.color)
+    }
+
    }
 
 
@@ -480,7 +494,6 @@ let hiddenPlanet = (d) => {
         hiddenPlanet(d)
 
         hiddenInfo()
-
     }
     else
     {
@@ -505,10 +518,30 @@ let zeroFlage = (planet) => {
     })
 }
 
+let clickDistance = (d) => {
+
+    zeroFlage(d.id);
+
+    if(d.flag)
+    {
+        d.flag = 0;
+        hiddenPlanet(d)
+    }
+    else
+    {
+        d.flag = 1;
+        showPlanet(d)
+    }
+
+}
+
+
 
 
 
 const menu = d3.select('nav .planet')
+
+let flagHiddenMenu = 1
 
 menu.selectAll('button')
     .data(DATA.corps)
@@ -518,11 +551,173 @@ menu.selectAll('button')
     .text(d => d.name)
     .on("mouseover",d => {if(!d.flag) {showPlanet(d)}})
     .on("mouseout", d =>{if(!d.flag) {hiddenPlanet(d)}})
-    .on("click", d => clickPlanet(d))
+    .on("click", d => {if(flagHiddenMenu) {clickPlanet(d)} else {clickDistance(d)}})
 
     
 
+
+    d3.select('nav .distance')
+    .on("click", () => showDistance())
+
+    d3.select('nav .systeme')
+    .on("click", () => showSystem())
+
+    d3.select('nav .volume')
+    .on("click", () => showVolume())
+
+   
+let showDistance = () => {
+   
+    d3.select('svg#sunSystem')
+            .transition()
+            .duration(1000)
+            .style('height','0vh')
+            .style('width','0vm')
+
+    d3.select('svg#volume')
+            .transition()
+            .duration(1000)
+            .style('height','0vh')
+            .style('width','0vm')
+   
+   d3.select('svg#distance')
+            .transition()
+            .duration(1000)
+            .style('height','95vh')
+            .style('width','100vw')
+
+    flagHiddenMenu = 0
+
+    hiddenInfo()
+
+}
+
+let showSystem = () => {
+
+    d3.select('svg#distance')
+            .transition()
+            .duration(1000)
+            .style('height','0vh')
+            .style('width','0vm')
+
+    d3.select('svg#volume')
+            .transition()
+            .duration(1000)
+            .style('height','0vh')
+            .style('width','0vm')
+   
+   d3.select('svg#sunSystem')
+            .transition()
+            .duration(1000)
+            .style('height','95vh')
+            .style('width','100vw')
+
+    flagHiddenMenu = 1
+
+    hiddenInfo()
+
+}
+
+
+let showVolume = () => {
+
+    d3.select('svg#distance')
+            .transition()
+            .duration(1000)
+            .style('height','0vh')
+            .style('width','0vm')
+
+    d3.select('svg#sunSystem')
+            .transition()
+            .duration(1000)
+            .style('height','0vh')
+            .style('width','0vm')
+   
+   d3.select('svg#volume')
+            .transition()
+            .duration(1000)
+            .style('height','95vh')
+            .style('width','100vw')
+
+    flagHiddenMenu = 0
+
+    hiddenInfo()
+
+}
+
  
+
+let flagAll = 0
+
+let clickAll = () => {
+
+    flagAll = !flagAll
+
+    if(flagAll)
+    {
+        d3.selectAll('g.sun circle').style('fill','#d8345f')
+
+        DATA.corps.forEach( d => {
+            
+            d3.select(`.orbite${d.id}`)
+                .style('opacity',100)
+
+            d3.select(`.line${d.id}`)
+                .style('opacity',100)
+        })
+    }
+    else
+    {
+        d3.selectAll('g.sun circle').style('fill',d => d.color)
+
+        DATA.corps.forEach( d => {
+
+            hiddenPlanet(d)
+        })
+    }    
+
+}
+
+
+let svgLogo = d3.select('#logo')
+                .on('click',() => clickAll())
+                .append('g')
+                .join('g')
+                
+
+
+    svgLogo.append('circle')
+    .attr('cx',100)
+    .attr('cy',100)
+    .attr('fill','white')
+    .attr('r',20)
+
+
+
+
+    svgLogo.append('circle')
+    .attr('cx',50 )
+    .attr('cy',50)
+    .attr('fill','white')
+    .attr('r',20)
+    .append('animateTransform')
+    .attr('attributeName','transform')
+    .attr('type','rotate')
+    .attr('from', `0 100 100`)
+    .attr('to',`360 100 100`)
+    .attr('dur',40)
+    .attr('repeatCount','indefinite');
+
+    
+    svgLogo.append('circle')
+    .attr('cx',100)
+    .attr('cy',100)
+    .attr('r', 80)
+    .attr('stroke','white')
+    .attr('fill','none')
+    .style('opacity',100)
+    .style('stroke-width',2)
+    
 
 
 d3.select('.drop')
@@ -609,36 +804,22 @@ let drop = () => {
 
 const yMargin = 200;
 
-const svgDistance = d3.select('#distance')
-
-d3.select('.distance')
-    .on("click", () => showDistance())
    
-
-
-   
-let showDistance = () => {
-   
-    d3.select('#sunSystem')
-            .transition()
-            .duration(1000)
-            .style('height','0vh')
-            .style('width','0vm')
-
-    const distanceMAX = 2249200
+const distanceMAX = 2249200
 
 
    
    let distance = d3.select('#distance')
-            .style('height','95vh')
-            .style('width','100vw')
+            .style('height','0vh')
+            .style('width','0vm')
             .selectAll('g')
             .data(DATA.corps)
             .enter()
             .append('g')
             .attr('class',d => d.id)
-            .on("mouseover",d => {if(!d.flag) {showPlanet(d)}})
-            .on("mouseout", d =>{if(!d.flag) {hiddenPlanet(d)}})
+            .on("mouseover",d => {if(!d.flag && !flagAll) {showPlanet(d)}})
+            .on("mouseout", d =>{if(!d.flag && !flagAll) {hiddenPlanet(d)}})
+            .on("click", d => {if(!flagAll) {clickDistance(d)}})
 
             
             distance.append('line')
@@ -695,7 +876,7 @@ let showDistance = () => {
             d3.select('#distance g.sun circle')
             .remove()
 
-            d3.select('#distance g.sun line')
+            d3.selectAll('#distance g.sun line')
             .remove()
 
             d3.selectAll('#distance g.sun text')
@@ -709,14 +890,83 @@ let showDistance = () => {
             .attr('cy', 1000)
             .attr('fill','#fcbf1e')
             .attr('r',1000)
+
             
 
             //d3.select('#distance g.sun')
             //.style('visibility','hidden')
 
-   }
 
 
 
+const xMargin = 380;
 
+const volumeMAX = 1000
+
+   
+   let volume = d3.select('#volume')
+            .style('height','0vh')
+            .style('width','0vm')
+            .selectAll('g')
+            .data(DATA.corps)
+            .enter()
+            .append('g')
+            .attr('class',d => d.id)
+            .on("mouseover",d => {if(!d.flag && !flagAll) {showPlanet(d)}})
+            .on("mouseout", d =>{if(!d.flag && !flagAll) {hiddenPlanet(d)}})
+            .on("click", d => {if(!flagAll) {clickDistance(d)}})
+
+            
+
+            volume.append('circle')
+            .attr('id',d => d.id)
+            .attr('cx', (d,i) => i*xMargin)
+            .attr('cy',1000)
+            .attr('fill',d => d.color)
+            .attr('r',d => d.data.rayon/volumeMAX)
+
+            volume.append('circle')
+            .attr("class",d => `orbite${d.id}`)
+            .attr('cx', (d,i) => i*xMargin)
+            .attr('cy',1000)
+            .attr('r',d => d.data.rayon/volumeMAX + 100)
+            .attr('fill',d => d.color)
+            .style('opacity',0)
+
+            volume.append('text')
+            .attr('class',d => `text${d.id}`)
+            .attr('x',(d,i) => i*xMargin)
+            .attr('y',1000 - 100)
+            .attr('fill',d => d.color)
+            .style('font-family','Verdana')
+            .style('font-size','55px')
+            .style('text-anchor','middle')
+            .text(d => d.name)
+            .style('visibility','hidden')
+
+
+
+            volume.append('text')
+            .attr('class',d => `text${d.id}`)
+            .attr('x',(d,i) => i*xMargin)
+            .attr('y',1000 + 200)
+            .attr('fill','white')
+            .style('font-family','Verdana')
+            .style('font-size','40px')
+            .style('text-anchor','middle')
+            .text(d => `volume : ${d.data.volume.volumeValue}x10*${d.data.volume.volumeExponent} ${DATA.infoData.volume}`)
+            .style('visibility','hidden')
+
+
+
+            d3.select('#volume g.sun circle')
+            .attr('id','sun')
+            .attr('cx',-xMargin - 220)
+
+            d3.selectAll('#volume g.sun text')
+            .attr('x',-xMargin - 220)
+            .attr('y',(d,i) => i*100 +1000)
+
+            d3.select('#volume g.sun circle.orbitesun')
+            .remove()
 

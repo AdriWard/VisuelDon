@@ -14,6 +14,11 @@
 
     d3.select(`.line${d.id}`)
         .style('opacity',100)
+
+    if(d.id == 'sun')
+    {
+        d3.selectAll('g.sun circle').style('fill','#d8345f')
+    }
    
    } 
 
@@ -33,7 +38,13 @@ let hiddenPlanet = (d) => {
 
     d3.select(`.line${d.id}`)
         .style('opacity',0)
-   
+    
+
+    if(d.id == 'sun')
+    {
+        d3.selectAll('g.sun circle').style('fill',d => d.color)
+    }
+
    }
 
 
@@ -47,7 +58,6 @@ let hiddenPlanet = (d) => {
         hiddenPlanet(d)
 
         hiddenInfo()
-
     }
     else
     {
@@ -71,4 +81,22 @@ let zeroFlage = (planet) => {
         }
     })
 }
+
+let clickDistance = (d) => {
+
+    zeroFlage(d.id);
+
+    if(d.flag)
+    {
+        d.flag = 0;
+        hiddenPlanet(d)
+    }
+    else
+    {
+        d.flag = 1;
+        showPlanet(d)
+    }
+
+}
+
 

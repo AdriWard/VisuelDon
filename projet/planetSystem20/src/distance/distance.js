@@ -1,36 +1,22 @@
 
 const yMargin = 200;
 
-const svgDistance = d3.select('#distance')
-
-d3.select('.distance')
-    .on("click", () => showDistance())
    
-
-
-   
-let showDistance = () => {
-   
-    d3.select('#sunSystem')
-            .transition()
-            .duration(1000)
-            .style('height','0vh')
-            .style('width','0vm')
-
-    const distanceMAX = 2249200
+const distanceMAX = 2249200
 
 
    
    let distance = d3.select('#distance')
-            .style('height','95vh')
-            .style('width','100vw')
+            .style('height','0vh')
+            .style('width','0vm')
             .selectAll('g')
             .data(DATA.corps)
             .enter()
             .append('g')
             .attr('class',d => d.id)
-            .on("mouseover",d => {if(!d.flag) {showPlanet(d)}})
-            .on("mouseout", d =>{if(!d.flag) {hiddenPlanet(d)}})
+            .on("mouseover",d => {if(!d.flag && !flagAll) {showPlanet(d)}})
+            .on("mouseout", d =>{if(!d.flag && !flagAll) {hiddenPlanet(d)}})
+            .on("click", d => {if(!flagAll) {clickDistance(d)}})
 
             
             distance.append('line')
@@ -87,7 +73,7 @@ let showDistance = () => {
             d3.select('#distance g.sun circle')
             .remove()
 
-            d3.select('#distance g.sun line')
+            d3.selectAll('#distance g.sun line')
             .remove()
 
             d3.selectAll('#distance g.sun text')
@@ -101,12 +87,10 @@ let showDistance = () => {
             .attr('cy', 1000)
             .attr('fill','#fcbf1e')
             .attr('r',1000)
+
             
 
             //d3.select('#distance g.sun')
             //.style('visibility','hidden')
-
-   }
-
 
 
