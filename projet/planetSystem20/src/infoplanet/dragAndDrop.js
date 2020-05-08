@@ -13,11 +13,6 @@ let drop = () => {
        d3.select('.info')
         .style('top',`${event.pageY - MouseY}px`)
         .style('left',`${event.pageX - MouseX}px`)
-
-
-
-        // récupérer la position de la bull-infos
-
        
       console.log("page x " + (event.pageX))
 
@@ -60,7 +55,11 @@ let drop = () => {
 
             console.log(event.offsetY)
 
+            console.log("attribut" + d3.select('.info'))
+
             console.log('test')
+
+            
 
         })
         .on('mousemove', () => {

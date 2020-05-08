@@ -18,11 +18,11 @@
 
   ### compléter la documentation
 
-  j'ai mis ce qui est demandé dans la documentation, mais j'aimerai la compléter avec plus d'information
+ j'aimerai la compléter la documentation avec plus d'informations.
 
   ### *si le temps* ajout d'un logo
 
-  j'aimais bien qu'on puise voir toutes les orbites (en même temps), je pourrais le faire avec un *logo* (bouton) dans le menu.
+  ça serait bien qu'on puisse voir toutes les orbites en même temps, je pourrais le faire avec un *logo* (bouton) dans le menu.
 
 ## dossiers principaux 
 

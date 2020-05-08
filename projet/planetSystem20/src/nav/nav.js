@@ -1,5 +1,5 @@
 
-const menu = d3.select('nav')
+const menu = d3.select('nav .planet')
 
 menu.selectAll('button')
     .data(DATA.corps)
@@ -10,3 +10,7 @@ menu.selectAll('button')
     .on("mouseover",d => {if(!d.flag) {showPlanet(d)}})
     .on("mouseout", d =>{if(!d.flag) {hiddenPlanet(d)}})
     .on("click", d => clickPlanet(d))
+
+    
+
+ 

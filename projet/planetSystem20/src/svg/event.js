@@ -6,11 +6,14 @@
         .style('opacity',100)
         
 
-    d3.select(`.text${d.id}`)
+    d3.selectAll(`.text${d.id}`)
         .style('visibility','visible')
 
     d3.select(`button.${d.id}`)
         .style('color',d => d.color)
+
+    d3.select(`.line${d.id}`)
+        .style('opacity',100)
    
    } 
 
@@ -22,11 +25,14 @@ let hiddenPlanet = (d) => {
         .style('opacity',0)
         
 
-    d3.select(`.text${d.id}`)
+    d3.selectAll(`.text${d.id}`)
         .style('visibility','hidden')
 
     d3.select(`button.${d.id}`)
         .style('color','white')
+
+    d3.select(`.line${d.id}`)
+        .style('opacity',0)
    
    }
 

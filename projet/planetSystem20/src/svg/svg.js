@@ -3,7 +3,7 @@ const xCentre = 1000;
 
 const yCentre = 1000;
 
-const svg = d3.select('svg')
+const svg = d3.select('#sunSystem')
                 .on("click", () => {
                     if(d3.event.target.localName == 'svg')
                     {
